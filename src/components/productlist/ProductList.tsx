@@ -1,23 +1,28 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/app/store/hooks/hooks";
 import { addProduct } from "@/app/store/slices/product";
 import { addCart } from "@/app/store/slices/cart";
+import { useCategory } from "../hooks/useCategory";
 
 export const ProductList = () => {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [qty, setQty] = useState("");
-
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.productSlice);
-  const carts = useAppSelector((state) => state.cartSlice);
-  console.log(carts, "dhfff");
+  const { getCategories, store } = useCategory();
+  useEffect(() => {
+    getCategories({});
+  }, []);
+  // const [name, setName] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [qty, setQty] = useState("");
+
+  // const products = useAppSelector((state) => state.productSlice);
+  // const carts = useAppSelector((state) => state.cartSlice);
+  // console.log(carts, "dhfff");
 
   return (
     <>
       <div className="grid grid-cols-4 gap-3  m-4">
-        <input
+        {/* <input
           type="text"
           placeholder="Product name"
           className="rounded-md bg-green-100 p-2"
@@ -45,15 +50,18 @@ export const ProductList = () => {
           }}
         >
           Add Item
-        </button>
+        </button> */}
       </div>
       <div className="grid grid-cols-3 gap-4">
-        {products.map((item) => {
+        {store.entities.map((item: any) => {
           return (
             <div
               className="w-350 border rounded-md bg-slate-300 p-4"
               key={item.name}
             >
+              <div>
+                <img src={item.image} alt="" />
+              </div>
               <h1>{item.name}</h1>
               <p>{item.category}</p>
               <p>{item.qty}</p>
