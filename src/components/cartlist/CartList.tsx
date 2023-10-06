@@ -22,6 +22,7 @@ const CartList = () => {
           </div>
         );
       })}
+      
     </div>
   );
 };
