@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.player {
+  width: 100%;
+  border: 5px solid #9d7a26b0;
+  box-shadow: 0 0 20px 3px #9d7a26b0;
+  position: relative;
+  font-size: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.player video {
+  width: 100%;
+  position: relative;
+}
+.videoWrapper {
+  position: relative;
+}
+.subtitle {
+  background: transparent;
+  height: 60px;
+  /* color: #9d7a26b0; */
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.5px;
+  font-family: poppins;
+  font-weight: 600;
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.wrappControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.player:hover .wrappControls {
+  opacity: 1;
+}
+.leftWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+.volumeWrapper {
+  display: flex;
+  gap: 8px;
+}
+.timeWrapp {
+  display: flex;
+}
+.rightWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 6px;
+}
+/* This css is only applied when fullscreen is active. */
+
+button.controlBtn,
+.controlBtn {
+  font-size: 28px;
+  color: #9d7a26b0;
+}
+.total-time,
+.current-time {
+  font-size: 14px;
+  color: #fff;
+}
+.videoWrapper:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.5s ease all;
+  background: linear-gradient(180deg, transparent, #000000);
+}
+.player:hover .videoWrapper:after {
+  height: 30%;
+}
+button.controlBtn.showModal {
+  position: static;
+}
+.playbackRateWrapper.showSpeedBtn {
+  visibility: visible;
+}
+.playbackRateWrapper .controlBtn.activeSpeed {
+  color: #fff;
+}
+
+.playbackRateWrapper {
+  background: #9d7a26b0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 58px;
+  right: 30px;
+  width: 150px;
+  height: 160px;
+  justify-content: center;
+  align-items: baseline;
+  visibility: hidden;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 15px;
+}
+.playbackRateWrapper .controlBtn {
+  color: #000;
+  font-size: 16px;
+}
+input.video-range {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+input[type="range"].video-range {
+  width: 98%;
+}
+/* unholy css to style input type="range" */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 95%;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1.3px;
+  border: 0.2px solid rgba(1, 1, 1, 0);
+}
+input[type="range"]::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #9d7a26b0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+  box-shadow: 0 0 2px #9d7a26b0;
+}
+
+input[type="range"]::-webkit-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+  background: #9d7a26b0;
+  border-radius: 1.3px;
+  border: 0.2px solid rgba(1, 1, 1, 0);
+}
+input[type="range"]::-webkit-range-thumb {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #ffc600;
+  cursor: pointer;
+}
