@@ -14,6 +14,8 @@ import {
   Legend,
 } from "chart.js";
 
+import { ChartConfiguration } from "chart.js";
+
 ChartJS.register(
   BarElement,
   CategoryScale,
@@ -25,11 +27,11 @@ ChartJS.register(
 
 export default function Home() {
   const data = {
-    labels: ["jan", "feb", "march", "april"],
+    labels: ["jan", "feb", "march", "april", "may", "june", "july"],
     datasets: [
       {
         label: "Sales In 2k2@",
-        data: [4, 3, 5, 10],
+        data: [4, 3, 5, 20],
         backgroundColor: "#eee",
       },
       {
@@ -40,22 +42,17 @@ export default function Home() {
     ],
   };
   const option = {
-    title: {
-      display: true,
-      text: "Bar Chart",
-    },
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            min: 0,
-            max: 10,
-            stepSize: 1,
-          },
+      y: {
+        min: 0,
+        max: 15,
+        ticks: {
+          stepSize: 3,
         },
-      ],
+      },
     },
   };
+
   return (
     <main className=" p-5">
       <h1 className="text-center">Redux Toolkit</h1>
